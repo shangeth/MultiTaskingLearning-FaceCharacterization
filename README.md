@@ -385,6 +385,15 @@ Model Prediction :
 
  ['Male', 'Happiness', 'Old Age', 'Frontal']
 </pre>
+![](https://chrisukorg.files.wordpress.com/2013/12/colincampbell-currentmugshot.jpg?w=584)
+<pre>
+Model Prediction :
+ [array([[0.9999938]], dtype=float32), array([[2.8101271e-05, 4.8138832e-06, 1.2227671e-09, 1.9924762e-04,
+        9.9948764e-01, 2.4624623e-04, 3.3880737e-05]], dtype=float32), array([[7.7598946e-07, 4.4494186e-09, 9.9999917e-01]], dtype=float32), array([[1.2987195e-08, 9.9999797e-01, 6.2150834e-10, 2.0691980e-06,
+        3.7260178e-11]], dtype=float32)]
+
+ ['Male', 'Neutral', 'Old Age', 'Frontal']
+ </pre>
 ## Future improvements to be made
 
 1. Make a Pytorch Module for MultiTasking Learning & Augmentation for multitasking learning.
