@@ -316,6 +316,8 @@ x_fd_output = Dense(y_fd_hot.shape[1], activation='softmax', name='x_fd_output')
 
 ## Future improvements to be made
 
-1. adding segmentation model to segment the face from an image or video .
-2. using autoencoders to blur out or segment the face from the image or video.
-3. develope a web app to demonstrate this project.
+1. Make a Pytorch Module for MultiTasking Learning & Augmentation for multitasking learning.
+2. adding segmentation model to segment the face from an image or video .
+3. using autoencoders to blur out or segment the face from the image or video.
+4. develope a web app to demonstrate this project.
+5. Get augmentation dataset 
