@@ -313,7 +313,45 @@ x_fd = Dropout(0.4)(x_fd)
 x_fd = Dense(128, activation='relu')(x_fd)
 x_fd_output = Dense(y_fd_hot.shape[1], activation='softmax', name='x_fd_output')(x_fd)
 ```
+## Model Prediction
+```python
+idxdict = [{0:'Female', 1:'Male'}, 
+           {0:'Anger', 1:'Disgust',2:'Fear', 3:'Happiness', 4:'Neutral', 5:'Sadness', 6:'Surprise' }, 
+           {0:'Middle Age', 1:'Old Age', 2:'Old Age' }, 
+           {0:'Down', 1:'Frontal', 2:'Left', 3:'Right', 4:'Up'}]
 
+def getmaxindex(l):
+  a=[]
+  if l[0][0] >0.5: 
+    l[0]=np.array([[0,1]])
+  else: l[0] = np.array([0,1])
+  for i in range(len(l)):
+    a.append(l[i][0].argmax(axis=0))
+  return a
+
+def predict_image(img):
+  pred_txt=[]
+  plt.imshow(img)
+  plt.grid(False)
+  plt.show()
+  pred = model.predict(im.reshape(1, 224, 224, 3))
+  print('Model Prediction :\n',pred)
+  idx = getmaxindex(pred)
+  for i in range(len(idx)):
+    pred_txt.append(idxdict[i][idx[i]])
+  print('\n',pred_txt)
+```
+![](https://i.pinimg.com/236x/b0/af/9a/b0af9abb797aea9ae658902e0b272594--christoph-waltz-supporting-actor.jpg)
+<pre>
+Model Prediction :
+ [array([[0.98098755]], dtype=float32), array([[5.4912241e-31, 1.6996787e-19, 0.0000000e+00, 1.0000000e+00,
+        8.5350787e-14, 6.1946490e-20, 3.0885606e-29]], dtype=float32), array([[1.146524e-21, 4.130661e-31, 1.000000e+00]], dtype=float32), array([[5.6413937e-01, 5.1520718e-04, 2.8015572e-01, 3.5165754e-04,
+        1.5483807e-01]], dtype=float32)]
+
+ ['Male', 'Happiness', 'Old Age', 'Down']</pre>
+ 
+ 
+ 
 ## Future improvements to be made
 
 1. Make a Pytorch Module for MultiTasking Learning & Augmentation for multitasking learning.
