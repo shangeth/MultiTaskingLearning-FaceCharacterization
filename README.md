@@ -233,7 +233,42 @@ for param in model.classifier.parameters():
 modelnew = MultiTaskLearning(model)
 ```
 ### Training in Pytorch(without Augmentation
-<pre></pre>
+<pre>
+Epoch - 1
+############
+Loss(Sex) : 0.7412909052588723
+Loss(Emotion) : 2.242590586751432
+Loss(Age) : 1.1959744549896592
+Loss(Face Direction) : 2.1285165858177155
+Loss(Total) : 1.5770931195052729
+________________________________________
+
+Train acc(Sex) : 0.5423910021781921
+Train acc(Emotion) : 0.024575572460889816
+Train acc(Age) : 0.1598750650882721
+Train acc(Face Direction) : 0.5855371356010437
+Train acc(Total) : 0.3280947208404541
+________________________________________
+
+Epoch - 2
+############
+Loss(Sex) : 0.7394668456076354
+Loss(Emotion) : 2.2383922523176167
+Loss(Age) : 1.193567744595751
+Loss(Face Direction) : 2.1313986073077564
+Loss(Total) : 1.5757063637927613
+________________________________________
+
+Train acc(Sex) : 0.5421967506408691
+Train acc(Emotion) : 0.025249920785427094
+Train acc(Age) : 0.15991245210170746
+Train acc(Face Direction) : 0.5879499912261963
+Train acc(Total) : 0.32882726192474365
+________________________________________
+.
+.
+.
+</pre>
 ### Model in Keras
 ```python
 inputs = Input(shape=(224, 224, 3), name='inputs')
