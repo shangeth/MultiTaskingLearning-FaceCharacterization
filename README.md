@@ -376,6 +376,15 @@ Model Prediction :
         6.6222106e-05]], dtype=float32)]
 
  ['Male', 'Neutral', 'Middle Age', 'Left']</pre>
+ ![](https://usercontent2.hubstatic.com/7653579.jpg)
+<pre>
+Model Prediction :
+ [array([[0.99999964]], dtype=float32), array([[6.8111354e-12, 1.0207035e-07, 4.7114721e-15, 9.9997067e-01,
+        2.8971483e-05, 2.1610518e-07, 5.4456648e-11]], dtype=float32), array([[2.1819297e-09, 8.3214922e-14, 1.0000000e+00]], dtype=float32), array([[1.0881673e-05, 9.9939263e-01, 4.0517339e-06, 5.9169094e-04,
+        7.8347290e-07]], dtype=float32)]
+
+ ['Male', 'Happiness', 'Old Age', 'Frontal']
+</pre>
 ## Future improvements to be made
 
 1. Make a Pytorch Module for MultiTasking Learning & Augmentation for multitasking learning.
