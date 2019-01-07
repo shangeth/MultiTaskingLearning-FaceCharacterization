@@ -350,7 +350,15 @@ Model Prediction :
 
  ['Male', 'Happiness', 'Old Age', 'Down']</pre>
  
- 
+ ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRafPgJepZ9chCl9ZGLi0EC5e3mVmc05wPHvxuiYg4kCiFvINeBvQ)
+ <pre>
+ Model Prediction :
+ [array([[4.9941887e-06]], dtype=float32), array([[3.3553686e-09, 3.8809858e-06, 1.2822178e-11, 9.9932766e-01,
+        6.5777352e-04, 1.0612529e-05, 1.2714095e-08]], dtype=float32), array([[8.1378478e-01, 3.1865619e-07, 1.8621497e-01]], dtype=float32), array([[7.1780937e-04, 9.0216461e-05, 9.9868721e-01, 2.3750174e-06,
+        5.0242245e-04]], dtype=float32)]
+
+ ['Female', 'Happiness', 'Middle Age', 'Left']
+ </pre>
  
 ## Future improvements to be made
 
