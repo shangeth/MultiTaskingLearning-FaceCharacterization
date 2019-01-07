@@ -359,7 +359,15 @@ Model Prediction :
 
  ['Female', 'Happiness', 'Middle Age', 'Left']
  </pre>
- 
+![](https://d.wattpad.com/story_parts/558325776/images/1529737a4b9211c6445421122304.jpg)
+<pre>
+Model Prediction :
+ [array([[0.00011555]], dtype=float32), array([[1.3009728e-03, 1.7888163e-04, 2.8493056e-07, 9.9974649e-04,
+        9.9407601e-01, 2.8159078e-03, 6.2812644e-04]], dtype=float32), array([[0.72783643, 0.01925719, 0.25290638]], dtype=float32), array([[3.6774931e-04, 7.3594981e-01, 2.6367772e-01, 2.8114794e-06,
+        1.8422278e-06]], dtype=float32)]
+
+ ['Female', 'Neutral', 'Middle Age', 'Frontal']
+ </pre>
 ## Future improvements to be made
 
 1. Make a Pytorch Module for MultiTasking Learning & Augmentation for multitasking learning.
