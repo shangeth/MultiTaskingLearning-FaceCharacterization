@@ -165,6 +165,119 @@ of individual tasks.
 
 I have used cross entropy as the loss function for each of the task.
 
+### Model in Pytorch
+```python
+class MultiTaskLearning(nn.Module):
+  def __init__(self, convbase):
+    super(MultiTaskLearning, self).__init__()
+    self.base = convbase
+    
+    classifier_input_size = 1000
+    classifier1_output_size = 2
+    classifier2_output_size = 7
+    classifier3_output_size = 3
+    classifier4_output_size = 5
+    
+    self.classifier1 = nn.Sequential(OrderedDict([
+    ('c1_fc1', nn.Linear(classifier_input_size, 512)),
+    ('c1_relu', nn.ReLU()),
+    ('c1_fc2', nn.Linear(512, 128)),
+    ('c1_relu', nn.ReLU()),
+    ('c1_fc3', nn.Linear(128, classifier1_output_size)),
+    ('output', nn.LogSoftmax(dim=1))
+    ]))
+    
+    self.classifier2 = nn.Sequential(OrderedDict([
+    ('c2_fc1', nn.Linear(classifier_input_size, 512)),
+    ('c2_relu', nn.ReLU()),
+    ('c2_fc2', nn.Linear(512, 128)),
+    ('c2_relu', nn.ReLU()),
+    ('c2_fc3', nn.Linear(128, classifier2_output_size)),
+    ('output', nn.LogSoftmax(dim=1))
+    ]))
+      
+    self.classifier3 = nn.Sequential(OrderedDict([
+    ('c3_fc1', nn.Linear(classifier_input_size, 512)),
+    ('c3_relu', nn.ReLU()),
+    ('c3_fc2', nn.Linear(512, 128)),
+    ('c3_relu', nn.ReLU()),
+    ('c3_fc3', nn.Linear(128, classifier3_output_size)),
+    ('output', nn.LogSoftmax(dim=1))
+    ]))
+        
+    self.classifier4 = nn.Sequential(OrderedDict([
+    ('c4_fc1', nn.Linear(classifier_input_size, 512)),
+    ('c4_relu', nn.ReLU()),
+    ('c4_fc2', nn.Linear(512, 128)),
+    ('c4_relu', nn.ReLU()),
+    ('c4_fc3', nn.Linear(128, classifier4_output_size)),
+    ('output', nn.LogSoftmax(dim=1))
+    ]))
+    
+  def forward(self, x):
+    x_base = self.base(x)
+    clf1_output = self.classifier1(x_base)
+    clf2_output = self.classifier2(x_base)
+    clf3_output = self.classifier3(x_base)
+    clf4_output = self.classifier4(x_base)
+    return clf1_output, clf2_output, clf3_output, clf4_output     
+     
+```
+```python
+model = models.vgg19(pretrained=True)
+for param in model.parameters():
+    param.requires_grad = False
+for param in model.classifier.parameters():
+  param.required_grad = True
+    
+modelnew = MultiTaskLearning(model)
+```
+### Training in Pytorch(without Augmentation
+<pre></pre>
+### Model in Keras
+```python
+inputs = Input(shape=(224, 224, 3), name='inputs')
+conv_base = VGG19(weights='imagenet', include_top=False, input_shape=(224,224,3))(inputs)
+flatten = Flatten()(conv_base)
+
+x_sex = Dense(1024, activation='relu')(flatten)
+x_sex = Dropout(0.4)(x_sex)
+x_sex = Dense(512, activation='relu')(x_sex)
+x_sex = Dropout(0.5)(x_sex)
+x_sex = Dense(256, activation='relu')(x_sex)
+x_sex = Dropout(0.4)(x_sex)
+x_sex = Dense(128, activation='relu')(x_sex)
+x_sex_output = Dense(1, activation='sigmoid', name='x_sex_output')(x_sex)
+
+x_emotion = Dense(1024, activation='relu')(flatten)
+x_emotion = Dropout(0.4)(x_emotion)
+x_emotion = Dense(512, activation='relu')(x_emotion)
+x_emotion = Dropout(0.5)(x_emotion)
+x_emotion = Dense(256, activation='relu')(x_emotion)
+x_emotion = Dropout(0.4)(x_emotion)
+x_emotion = Dense(128, activation='relu')(x_emotion)
+x_emotion = Dropout(0.4)(x_emotion)
+x_emotion = Dense(64, activation='relu')(x_emotion)
+x_emotion_output = Dense(y_emotion_hot.shape[1], activation='softmax', name='x_emotion_output')(x_emotion)
+
+x_age = Dense(1024, activation='relu')(flatten)
+x_age = Dropout(0.4)(x_age)
+x_age = Dense(512, activation='relu')(x_age)
+x_age = Dropout(0.5)(x_age)
+x_age = Dense(256, activation='relu')(x_age)
+x_age = Dropout(0.4)(x_age)
+x_age = Dense(128, activation='relu')(x_age)
+x_age_output = Dense(y_age_hot.shape[1], activation='softmax', name='x_age_output')(x_age)
+
+x_fd = Dense(1024, activation='relu')(flatten)
+x_fd = Dropout(0.4)(x_fd)
+x_fd = Dense(512, activation='relu')(x_fd)
+x_fd = Dropout(0.5)(x_fd)
+x_fd = Dense(256, activation='relu')(x_fd)
+x_fd = Dropout(0.4)(x_fd)
+x_fd = Dense(128, activation='relu')(x_fd)
+x_fd_output = Dense(y_fd_hot.shape[1], activation='softmax', name='x_fd_output')(x_fd)
+```
 
 ## Future improvements to be made
 
