@@ -368,6 +368,14 @@ Model Prediction :
 
  ['Female', 'Neutral', 'Middle Age', 'Frontal']
  </pre>
+ ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-Z-SxZyTnBDoM9ZFdogti0w_4i9liLxxoBJrOe4oqYvjmqVm4gQ)
+ <pre>
+ Model Prediction :
+ [array([[1.]], dtype=float32), array([[1.8694135e-12, 9.8778297e-10, 2.0186993e-18, 4.8219282e-02,
+        9.5177954e-01, 1.1466984e-06, 6.2040190e-10]], dtype=float32), array([[9.9999845e-01, 9.3176354e-08, 1.4640041e-06]], dtype=float32), array([[2.5171862e-04, 1.4977384e-03, 9.9817860e-01, 5.6700296e-06,
+        6.6222106e-05]], dtype=float32)]
+
+ ['Male', 'Neutral', 'Middle Age', 'Left']</pre>
 ## Future improvements to be made
 
 1. Make a Pytorch Module for MultiTasking Learning & Augmentation for multitasking learning.
